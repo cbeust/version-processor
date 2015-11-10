@@ -24,15 +24,11 @@ val processorExample = javaProject(processor) {
     directory = "example"
 
     dependencies {
-        compile(file("../processor/kobaltBuild/libs/processor-0.1.jar"))
+        compile(file("processor/kobaltBuild/libs/processor-0.1.jar"))
     }
 
     assemble {
         jar {
-            fatJar = true
-            manifest {
-                attributes("Main-Class", "com.beust.apt.example.Example")
-            }
         }
     }
 

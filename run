@@ -1,0 +1,1 @@
+java -classpath processor/kobaltBuild/libs/processor-0.1.jar:example/kobaltBuild/libs/example-0.1.jar com.beust.apt.example.Example
