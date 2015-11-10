@@ -15,7 +15,14 @@
     </wildcardResourcePatterns>
     <annotationProcessing>
       <profile default="true" name="Default" enabled="false">
+        <processor name="com.beust.apt.processor.MainProcessor" />
+        <processorPath useClasspath="true">
+          <entry name="$PROJECT_DIR$/processor/src/main/java" />
+        </processorPath>
+      </profile>
+      <profile default="false" name="VersionProcessor" enabled="true">
         <processorPath useClasspath="true" />
+        <module name="example" />
       </profile>
     </annotationProcessing>
   </component>
