@@ -3,6 +3,7 @@ import com.beust.kobalt.*
 import com.beust.kobalt.plugin.application.*
 import com.beust.kobalt.plugin.java.*
 import com.beust.kobalt.plugin.packaging.*
+import com.beust.kobalt.plugin.publish.*
 import com.beust.kobalt.plugin.apt.*
 
 val processor = javaProject {
@@ -13,8 +14,11 @@ val processor = javaProject {
     directory = "processor"
 
     assemble {
-        jar {
-        }
+        mavenJars {}
+    }
+
+    jcenter {
+        publish = true
     }
 }
 
@@ -25,9 +29,11 @@ val processorExample = javaProject(processor) {
     version = "0.1"
     directory = "example"
 
+    val processorJar = "processor/kobaltBuild/libs/version-processor-0.1.jar"
+
     dependencies {
-        apt(file("processor/kobaltBuild/libs/processor-0.1.jar"))
-        compile(file("processor/kobaltBuild/libs/processor-0.1.jar"))
+        apt(file(processorJar))
+        compile(file(processorJar))
     }
 
     assemble {
