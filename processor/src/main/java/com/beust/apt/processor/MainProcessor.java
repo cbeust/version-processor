@@ -21,7 +21,7 @@ public class MainProcessor extends AbstractProcessor {
     private Messager messager;
 
     public MainProcessor() {
-        System.out.println("Instantiating MainProcessor");
+        log("Instantiating MainProcessor");
     }
 
     @Override
@@ -44,7 +44,7 @@ public class MainProcessor extends AbstractProcessor {
                     String packageName = packageElement.getQualifiedName().toString();
                     JavaFileObject jfo = null;
                     try {
-                        System.out.println("version = " + version.value());
+                        log("version = " + version.value());
                         jfo = filer.createSourceFile(packageName + ".GeneratedVersion");
                         BufferedWriter writer = new BufferedWriter(jfo.openWriter());
                         writer.write("package " + packageName + ";\n\n");
@@ -52,7 +52,7 @@ public class MainProcessor extends AbstractProcessor {
                         writer.write("    public static final String VERSION = \"" + version.value() + "\";\n");
                         writer.write("}\n");
                         writer.close();
-                        System.out.println("Generated " + jfo.getName());
+                        log("Generated " + jfo.getName());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -71,5 +71,9 @@ public class MainProcessor extends AbstractProcessor {
     @Override
     public SourceVersion getSupportedSourceVersion() {
         return SourceVersion.RELEASE_7;
+    }
+
+    private static void log(String s) {
+        System.out.println("[MainProcessor] " + s);
     }
 }
