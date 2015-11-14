@@ -8,5 +8,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface Version {
-    String value();
+    String value() default "";
+    String fileName() default "version.properties";
+    String propertyName() default "version";
 }

@@ -4,24 +4,25 @@ import com.beust.apt.processor.Version;
 
 import java.io.File;
 
-@Version("1.3")
+@Version(fileName = "example/src/main/properties/version.properties", propertyName = "example.version")
 class Example {
     public Example() {
         System.out.println("Instantiating Example");
     }
 
     public static void main(String[] argv) throws Exception {
-        // Uncomment these lines and launch this class to debug the annotation processor.
-//        String[] args = new String[] {
-////                "-proc:only",
-//                "-classpath", "/Users/beust/home/java/java-apt-example/processor/kobaltBuild/libs/processor-0.1.jar",
-//                "-processor", "com.beust.apt.processor.MainProcessor",
-//                "/Users/beust/java/java-apt-example/example/src/main/java/com/beust/apt/example/Example.java"
-//        };
+        String root = "/Users/cbeust/java/java-apt-example/";
+        String[] args = new String[] {
+                "-classpath",
+                root + "processor/kobaltBuild/libs/processor-0.1.jar",
+                "-processor", "com.beust.apt.processor.VersionProcessor",
+                root + "example/src/main/java/com/beust/apt/example/Example.java"
+        };
+        // Uncomment this line and launch this class to debug the annotation processor.
 //        com.sun.tools.javac.Main.main(args);
 
         File file = new File(".");
         System.out.println("Version generated: " + GeneratedVersion.VERSION);
-        new Example();
+//        new Example();
     }
 }

@@ -1,1 +1,1 @@
-com.beust.apt.processor.MainProcessor
+com.beust.apt.processor.VersionProcessor
