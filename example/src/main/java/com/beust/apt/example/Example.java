@@ -19,6 +19,7 @@ class Example {
                 root + "example/src/main/java/com/beust/apt/example/Example.java"
         };
         // Uncomment this line and launch this class to debug the annotation processor.
+        // You need $JDK_HOME/lib/tools.jar for this
 //        com.sun.tools.javac.Main.main(args);
 
         File file = new File(".");
