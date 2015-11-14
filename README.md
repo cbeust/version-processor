@@ -1,6 +1,6 @@
 # A simple annotation processing example
 
-This project demonstrates a simple annotation processor that is built with [Kobalt](http://beust.com/kobalt).
+This project demonstrates a simple annotation processor that is built with [Kobalt](http://beust.com/kobalt). The annotation processor allows you to generate a `Version` class containing a version number that is either read from a `Properties` file or directly defined in the annotation.
 
 There are two modules in this project:
 
