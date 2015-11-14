@@ -6,6 +6,8 @@ import com.beust.kobalt.plugin.packaging.*
 import com.beust.kobalt.plugin.publish.*
 import com.beust.kobalt.plugin.apt.*
 
+val r = repos("https://dl.bintray.com/cbeust/maven")
+
 val processor = javaProject {
     name = "version-processor"
     group = "com.beust"
@@ -29,11 +31,13 @@ val processorExample = javaProject(processor) {
     version = "0.1"
     directory = "example"
 
-    val processorJar = "processor/kobaltBuild/libs/version-processor-0.1.jar"
+    val processorJar =
+            "com.beust:version-processor:0.1"
+//            file("processor/kobaltBuild/libs/version-processor-0.1.jar")
 
     dependencies {
-        apt(file(processorJar))
-        compile(file(processorJar))
+        apt(processorJar)
+        compile(processorJar)
     }
 
     assemble {
