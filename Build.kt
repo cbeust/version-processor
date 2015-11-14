@@ -3,7 +3,7 @@ import com.beust.kobalt.*
 import com.beust.kobalt.plugin.application.*
 import com.beust.kobalt.plugin.java.*
 import com.beust.kobalt.plugin.packaging.*
-import com.beust.kobalt.plugin.packaging.*
+import com.beust.kobalt.plugin.apt.*
 
 val processor = javaProject {
     name = "processor"
@@ -24,6 +24,7 @@ val processorExample = javaProject(processor) {
     directory = "example"
 
     dependencies {
+        apt(file("processor/kobaltBuild/libs/processor-0.1.jar"))
         compile(file("processor/kobaltBuild/libs/processor-0.1.jar"))
     }
 
