@@ -1,4 +1,4 @@
-package com.beust.apt.processor;
+package com.beust.version;
 
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;

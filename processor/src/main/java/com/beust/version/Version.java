@@ -1,4 +1,4 @@
-package com.beust.apt.processor;
+package com.beust.version;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
