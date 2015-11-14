@@ -6,7 +6,9 @@ import com.beust.kobalt.plugin.packaging.*
 import com.beust.kobalt.plugin.apt.*
 
 val processor = javaProject {
-    name = "processor"
+    name = "version-processor"
+    group = "com.beust"
+    artifactId = name
     version = "0.1"
     directory = "processor"
 
