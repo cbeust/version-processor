@@ -44,7 +44,7 @@ To install and run from Kobalt:
 ```
 
 dependencies {
-    apt("com.beust:version-processor:0.1")
+    apt("com.beust:version-processor:0.2")
 }
 
 ```
