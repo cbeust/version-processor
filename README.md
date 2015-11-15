@@ -39,3 +39,12 @@ To build and run the example:
 
 ```
 
+To install and run from Kobalt:
+
+```
+
+dependencies {
+    apt("com.beust:version-processor:0.1")
+}
+
+```
