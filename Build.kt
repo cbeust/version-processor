@@ -12,7 +12,7 @@ val processor = javaProject {
     name = "version-processor"
     group = "com.beust"
     artifactId = name
-    version = "0.1"
+    version = "0.2"
     directory = "processor"
 
     assemble {
@@ -28,7 +28,7 @@ val processorExample = javaProject(processor) {
     name = "example"
     group = "com.beust"
     artifactId = name
-    version = "0.1"
+    version = "0.2"
     directory = "example"
 
     val processorJar =
@@ -46,6 +46,6 @@ val processorExample = javaProject(processor) {
     }
 
     application {
-        mainClass = "com.beust.apt.example.Example"
+        mainClass = "com.beust.version.example.Example"
     }
 }
