@@ -79,8 +79,10 @@ public class VersionProcessor extends AbstractProcessor {
             if (f.exists()) {
                 log("Found " + f);
                 Properties p = new Properties();
-                p.load(new FileReader(f));
+                FileReader r = new FileReader(f);
+                p.load(r);
                 String result = p.getProperty(version.propertyName());
+                r.close();
                 return result;
             } else {
                 error("Couldn't find " + version.fileName());
@@ -90,6 +92,7 @@ public class VersionProcessor extends AbstractProcessor {
         return null;
     }
 
+    @Override
     public Set<String> getSupportedAnnotationTypes() {
         Set<String> result = new HashSet<>();
         result.add(Version.class.getCanonicalName());
