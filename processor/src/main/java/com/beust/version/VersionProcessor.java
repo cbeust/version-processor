@@ -48,12 +48,12 @@ public class VersionProcessor extends AbstractProcessor {
                         if (versionValue != null) {
                             log("Version value found: " + versionValue);
                             jfo = filer.createSourceFile(packageName + ".GeneratedVersion");
-                            BufferedWriter writer = new BufferedWriter(jfo.openWriter());
-                            writer.write("package " + packageName + ";\n\n");
-                            writer.write("public class GeneratedVersion {\n");
-                            writer.write("    public static final String VERSION = \"" + versionValue + "\";\n");
-                            writer.write("}\n");
-                            writer.close();
+                            try (BufferedWriter writer = new BufferedWriter(jfo.openWriter())) {
+                                writer.write("package " + packageName + ";\n\n");
+                                writer.write("public class GeneratedVersion {\n");
+                                writer.write("    public static final String VERSION = \"" + versionValue + "\";\n");
+                                writer.write("}\n");
+                            }
                             log("Generated " + jfo.getName());
                         } else {
                             error("Need to specify either @Version(value) or @Version(fileName)");
@@ -79,11 +79,10 @@ public class VersionProcessor extends AbstractProcessor {
             if (f.exists()) {
                 log("Found " + f);
                 Properties p = new Properties();
-                FileReader r = new FileReader(f);
-                p.load(r);
-                String result = p.getProperty(version.propertyName());
-                r.close();
-                return result;
+                try (FileReader r = new FileReader(f)) {
+                    p.load(r);
+                    return p.getProperty(version.propertyName());
+                }
             } else {
                 error("Couldn't find " + version.fileName());
             }
