@@ -22,7 +22,7 @@ val processor = project {
     }
 }
 
-val processorExample = javaProject(processor) {
+val processorExample = project(processor) {
     name = "example"
     group = "com.beust"
     artifactId = name
