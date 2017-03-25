@@ -6,15 +6,20 @@ import com.beust.kobalt.plugin.packaging.*
 import com.beust.kobalt.plugin.publish.*
 import com.beust.kobalt.plugin.apt.*
 
+val VERSION = "0.2"
+
 val processor = project {
     name = "version-processor"
     group = "com.beust"
     artifactId = name
-    version = "0.2"
+    version = VERSION
     directory = "processor"
 
     assemble {
-        mavenJars {}
+        jar {
+            include(from("service"), to(""), glob("**/*"))
+            include(from("kobaltBuild/classes"), to(""), glob("**/*"))
+        }
     }
 
     bintray {
@@ -22,19 +27,18 @@ val processor = project {
     }
 }
 
+// We need to depend on `processor` so we get built after but we need to depend
+// on processor.jar, which contains the additional text file defining the annotation processor
 val processorExample = project(processor) {
     name = "example"
     group = "com.beust"
     artifactId = name
-    version = "0.2"
+    version = VERSION
     directory = "example"
 
-    val processorJar =
-            "com.beust:version-processor:0.1"
-//            file("processor/kobaltBuild/libs/version-processor-0.1.jar")
+    val processorJar = file("processor/kobaltBuild/libs/version-processor-$VERSION.jar")
 
     dependencies {
-        apt(processorJar)
         compile(processorJar)
     }
 
