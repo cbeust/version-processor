@@ -1,5 +1,5 @@
 .idea
-!.idea/modules.xml
+*.iml
 .kobalt
 kobaltBuild
 out
